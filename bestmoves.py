@@ -37,17 +37,20 @@ def find_moves(checkers, dice1, dice2):
                     for i in checkers.keys():               # Mevcut puan hesaplama
                         if checkers[i] == 1:
                             beforeScore -= 1
+
                         if checkers[i] == 2:
                             if i in importantDoors:
                                 beforeScore += 2
                             else:
                                 beforeScore += 1
+
                         if checkers[i] > 2:
                             score.append(i)
 
                     for i in copyCheckers.keys():           # Hamle sonrası hesaplama
                         if copyCheckers[i] == 1:
                             afterScore -= 1
+
                         if copyCheckers[i] == 2 and i not in score:
                             if i in importantDoors:
                                 afterScore += 2
@@ -58,6 +61,7 @@ def find_moves(checkers, dice1, dice2):
 
                     if tempScore > 0:
                         bestMoves.append(((stamp1, point1), (stamp2, point2), tempScore))
+
     return bestMoves
 
 print(find_moves(checkers, 6, 1))
